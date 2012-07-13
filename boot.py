@@ -1,9 +1,12 @@
 import logging
 import os
 import sys
+import ext
+import apps
 
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(ext.__file__)))
 DATA_ROOT = os.path.join(PROJECT_DIR, '.gaedata')
 
 # Overrides for os.environ.
@@ -187,8 +190,12 @@ def setup_project():
                          "sandbox: %s" % e)
 
     os.environ.update(env_ext)
-
-    extra_paths = [PROJECT_DIR, os.path.join(os.path.dirname(__file__), 'lib')]
+    logging.info("Project dir is %s", PROJECT_DIR)
+    extra_paths = [os.path.join(PROJECT_DIR, 'ext'), 
+                   os.path.join(PROJECT_DIR, 'apps'), 
+                   PROJECT_DIR, 
+                   os.path.join(os.path.dirname(__file__), 'lib'),
+                   ]
     zip_packages_dir = os.path.join(PROJECT_DIR, 'zip-packages')
 
     # We support zipped packages in the common and project folders.
@@ -206,3 +213,4 @@ def setup_project():
             while path in sys.path:
                 sys.path.remove(path)
         sys.path = extra_paths + sys.path
+        
