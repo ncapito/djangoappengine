@@ -191,7 +191,6 @@ def setup_project():
 
     os.environ.update(env_ext)
 
-    extra_paths = [os.path.join(PROJECT_DIR, 'ext'), 
     logging.info("Project dir is %s", PROJECT_DIR)
     extra_paths = [os.path.join(PROJECT_DIR, 'ext'), 
                    os.path.join(PROJECT_DIR, 'apps'), 
