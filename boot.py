@@ -1,9 +1,11 @@
 import logging
 import os
 import sys
+import ext
 
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(ext.__file__)))
 DATA_ROOT = os.path.join(PROJECT_DIR, '.gaedata')
 
 # Overrides for os.environ.
@@ -188,7 +190,10 @@ def setup_project():
 
     os.environ.update(env_ext)
 
-    extra_paths = [PROJECT_DIR, os.path.join(os.path.dirname(__file__), 'lib')]
+    extra_paths = [os.path.join(PROJECT_DIR, 'ext'), 
+                   PROJECT_DIR, 
+                   os.path.join(os.path.dirname(__file__), 'lib'),
+                   ]
     zip_packages_dir = os.path.join(PROJECT_DIR, 'zip-packages')
 
     # We support zipped packages in the common and project folders.
