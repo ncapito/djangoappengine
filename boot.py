@@ -2,7 +2,6 @@ import logging
 import os
 import sys
 import ext
-import apps
 
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
