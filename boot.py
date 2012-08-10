@@ -2,7 +2,6 @@ import logging
 import os
 import sys
 import ext
-import apps
 
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -193,6 +192,8 @@ def setup_project():
     logging.info("Project dir is %s", PROJECT_DIR)
     extra_paths = [os.path.join(PROJECT_DIR, 'ext'), 
                    os.path.join(PROJECT_DIR, 'apps'), 
+
+    extra_paths = [os.path.join(PROJECT_DIR, 'ext'), 
                    PROJECT_DIR, 
                    os.path.join(os.path.dirname(__file__), 'lib'),
                    ]
@@ -213,4 +214,3 @@ def setup_project():
             while path in sys.path:
                 sys.path.remove(path)
         sys.path = extra_paths + sys.path
-        
