@@ -194,6 +194,10 @@ def setup_project():
                    os.path.join(PROJECT_DIR, 'apps'), 
 
     extra_paths = [os.path.join(PROJECT_DIR, 'ext'), 
+
+    logging.info("Project dir is %s", PROJECT_DIR)
+    extra_paths = [os.path.join(PROJECT_DIR, 'ext'), 
+                   os.path.join(PROJECT_DIR, 'apps'), 
                    PROJECT_DIR, 
                    os.path.join(os.path.dirname(__file__), 'lib'),
                    ]
@@ -214,3 +218,4 @@ def setup_project():
             while path in sys.path:
                 sys.path.remove(path)
         sys.path = extra_paths + sys.path
+        
